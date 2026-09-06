@@ -11,6 +11,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import heroOg from "../assets/hero-hallway.jpg";
+
+const siteUrl = "https://mktweb360-pulama-showcase.pulama.workers.dev";
 
 function NotFoundComponent() {
   return (
@@ -77,14 +80,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Pulama · Puertas lacadas a medida en Madrid" },
+      {
+        name: "description",
+        content:
+          "Fabricante directo de puertas lacadas de interior en Madrid: taller propio, madera maciza y lacado al horno a medida.",
+      },
+      { name: "author", content: "Pulama" },
+      { property: "og:site_name", content: "Pulama" },
+      { property: "og:title", content: "Pulama · Puertas lacadas a medida en Madrid" },
+      {
+        property: "og:description",
+        content:
+          "Fabricante directo de puertas lacadas de interior en Madrid: taller propio, madera maciza y lacado al horno a medida.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: `${siteUrl}${heroOg}` },
+      { property: "og:url", content: siteUrl },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Pulama · Puertas lacadas a medida en Madrid" },
+      {
+        name: "twitter:description",
+        content:
+          "Fabricante directo de puertas lacadas de interior en Madrid: taller propio, madera maciza y lacado al horno a medida.",
+      },
+      { name: "twitter:image", content: `${siteUrl}${heroOg}` },
     ],
     links: [
       {

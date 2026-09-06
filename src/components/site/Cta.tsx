@@ -1,5 +1,5 @@
-import { Link } from "@tanstack/react-router";
-import type { ComponentProps, ReactNode } from "react";
+import { createLink, type LinkComponent } from "@tanstack/react-router";
+import { forwardRef, type ComponentProps, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const base =
@@ -14,18 +14,25 @@ const styles = {
 
 type Variant = keyof typeof styles;
 
-export function Cta({
-  variant = "solid",
-  className,
-  children,
-  ...props
-}: ComponentProps<typeof Link> & { variant?: Variant; children: ReactNode }) {
-  return (
-    <Link className={cn(base, styles[variant], className)} {...props}>
-      {children}
-    </Link>
-  );
+// Built via TanStack Router's `createLink` so that route-specific `params`/`search` typing
+// (eg. the measurements passed from a product page into /contacto) is preserved through the
+// wrapper, instead of collapsing to a generic `Link` shape.
+// https://tanstack.com/router/latest/docs/framework/react/guide/custom-link
+interface CtaAnchorProps extends ComponentProps<"a"> {
+  variant?: Variant;
 }
+
+const CtaAnchor = forwardRef<HTMLAnchorElement, CtaAnchorProps>(
+  ({ variant = "solid", className, children, ...props }, ref) => (
+    <a ref={ref} className={cn(base, styles[variant], className)} {...props}>
+      {children}
+    </a>
+  ),
+);
+
+const CreatedCtaLink = createLink(CtaAnchor);
+
+export const Cta: LinkComponent<typeof CtaAnchor> = (props) => <CreatedCtaLink {...props} />;
 
 export function CtaButton({
   variant = "solid",

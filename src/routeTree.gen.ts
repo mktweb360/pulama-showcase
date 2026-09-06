@@ -10,12 +10,39 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CitaPreviaRouteImport } from './routes/cita-previa'
+import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as ZonasInstalacionRouteImport } from './routes/zonas-instalacion'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as CatalogoIndexRouteImport } from './routes/catalogo.index'
+import { Route as BlogCategoriaIndexRouteImport } from './routes/blog.$categoria.index'
+import { Route as BlogCategoriaArticuloRouteImport } from './routes/blog.$categoria.$articulo'
 import { Route as CatalogoCategoriaIndexRouteImport } from './routes/catalogo.$categoria.index'
+import { Route as CatalogoCategoriaProductoRouteImport } from './routes/catalogo.$categoria.$producto'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CitaPreviaRoute = CitaPreviaRouteImport.update({
+  id: '/cita-previa',
+  path: '/cita-previa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZonasInstalacionRoute = ZonasInstalacionRouteImport.update({
+  id: '/zonas-instalacion',
+  path: '/zonas-instalacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CatalogoIndexRoute = CatalogoIndexRouteImport.update({
@@ -23,39 +50,114 @@ const CatalogoIndexRoute = CatalogoIndexRouteImport.update({
   path: '/catalogo/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogCategoriaIndexRoute = BlogCategoriaIndexRouteImport.update({
+  id: '/blog/$categoria/',
+  path: '/blog/$categoria/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogCategoriaArticuloRoute = BlogCategoriaArticuloRouteImport.update({
+  id: '/blog/$categoria/$articulo',
+  path: '/blog/$categoria/$articulo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CatalogoCategoriaIndexRoute = CatalogoCategoriaIndexRouteImport.update({
   id: '/catalogo/$categoria/',
   path: '/catalogo/$categoria/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CatalogoCategoriaProductoRoute =
+  CatalogoCategoriaProductoRouteImport.update({
+    id: '/catalogo/$categoria/$producto',
+    path: '/catalogo/$categoria/$producto',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cita-previa': typeof CitaPreviaRoute
+  '/contacto': typeof ContactoRoute
+  '/zonas-instalacion': typeof ZonasInstalacionRoute
+  '/blog/': typeof BlogIndexRoute
   '/catalogo/': typeof CatalogoIndexRoute
+  '/blog/$categoria/$articulo': typeof BlogCategoriaArticuloRoute
+  '/catalogo/$categoria/$producto': typeof CatalogoCategoriaProductoRoute
+  '/blog/$categoria/': typeof BlogCategoriaIndexRoute
   '/catalogo/$categoria/': typeof CatalogoCategoriaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cita-previa': typeof CitaPreviaRoute
+  '/contacto': typeof ContactoRoute
+  '/zonas-instalacion': typeof ZonasInstalacionRoute
+  '/blog': typeof BlogIndexRoute
   '/catalogo': typeof CatalogoIndexRoute
+  '/blog/$categoria/$articulo': typeof BlogCategoriaArticuloRoute
+  '/catalogo/$categoria/$producto': typeof CatalogoCategoriaProductoRoute
+  '/blog/$categoria': typeof BlogCategoriaIndexRoute
   '/catalogo/$categoria': typeof CatalogoCategoriaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cita-previa': typeof CitaPreviaRoute
+  '/contacto': typeof ContactoRoute
+  '/zonas-instalacion': typeof ZonasInstalacionRoute
+  '/blog/': typeof BlogIndexRoute
   '/catalogo/': typeof CatalogoIndexRoute
+  '/blog/$categoria/$articulo': typeof BlogCategoriaArticuloRoute
+  '/catalogo/$categoria/$producto': typeof CatalogoCategoriaProductoRoute
+  '/blog/$categoria/': typeof BlogCategoriaIndexRoute
   '/catalogo/$categoria/': typeof CatalogoCategoriaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/catalogo/' | '/catalogo/$categoria/'
+  fullPaths:
+    | '/'
+    | '/cita-previa'
+    | '/contacto'
+    | '/zonas-instalacion'
+    | '/blog/'
+    | '/catalogo/'
+    | '/blog/$categoria/$articulo'
+    | '/catalogo/$categoria/$producto'
+    | '/blog/$categoria/'
+    | '/catalogo/$categoria/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/catalogo' | '/catalogo/$categoria'
-  id: '__root__' | '/' | '/catalogo/' | '/catalogo/$categoria/'
+  to:
+    | '/'
+    | '/cita-previa'
+    | '/contacto'
+    | '/zonas-instalacion'
+    | '/blog'
+    | '/catalogo'
+    | '/blog/$categoria/$articulo'
+    | '/catalogo/$categoria/$producto'
+    | '/blog/$categoria'
+    | '/catalogo/$categoria'
+  id:
+    | '__root__'
+    | '/'
+    | '/cita-previa'
+    | '/contacto'
+    | '/zonas-instalacion'
+    | '/blog/'
+    | '/catalogo/'
+    | '/blog/$categoria/$articulo'
+    | '/catalogo/$categoria/$producto'
+    | '/blog/$categoria/'
+    | '/catalogo/$categoria/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CitaPreviaRoute: typeof CitaPreviaRoute
+  ContactoRoute: typeof ContactoRoute
+  ZonasInstalacionRoute: typeof ZonasInstalacionRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   CatalogoIndexRoute: typeof CatalogoIndexRoute
+  BlogCategoriaArticuloRoute: typeof BlogCategoriaArticuloRoute
+  CatalogoCategoriaProductoRoute: typeof CatalogoCategoriaProductoRoute
+  BlogCategoriaIndexRoute: typeof BlogCategoriaIndexRoute
   CatalogoCategoriaIndexRoute: typeof CatalogoCategoriaIndexRoute
 }
 
@@ -68,11 +170,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cita-previa': {
+      id: '/cita-previa'
+      path: '/cita-previa'
+      fullPath: '/cita-previa'
+      preLoaderRoute: typeof CitaPreviaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zonas-instalacion': {
+      id: '/zonas-instalacion'
+      path: '/zonas-instalacion'
+      fullPath: '/zonas-instalacion'
+      preLoaderRoute: typeof ZonasInstalacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/catalogo/': {
       id: '/catalogo/'
       path: '/catalogo'
       fullPath: '/catalogo/'
       preLoaderRoute: typeof CatalogoIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$categoria/': {
+      id: '/blog/$categoria/'
+      path: '/blog/$categoria'
+      fullPath: '/blog/$categoria/'
+      preLoaderRoute: typeof BlogCategoriaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$categoria/$articulo': {
+      id: '/blog/$categoria/$articulo'
+      path: '/blog/$categoria/$articulo'
+      fullPath: '/blog/$categoria/$articulo'
+      preLoaderRoute: typeof BlogCategoriaArticuloRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/catalogo/$categoria/': {
@@ -82,12 +226,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CatalogoCategoriaIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/catalogo/$categoria/$producto': {
+      id: '/catalogo/$categoria/$producto'
+      path: '/catalogo/$categoria/$producto'
+      fullPath: '/catalogo/$categoria/$producto'
+      preLoaderRoute: typeof CatalogoCategoriaProductoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CitaPreviaRoute: CitaPreviaRoute,
+  ContactoRoute: ContactoRoute,
+  ZonasInstalacionRoute: ZonasInstalacionRoute,
+  BlogIndexRoute: BlogIndexRoute,
   CatalogoIndexRoute: CatalogoIndexRoute,
+  BlogCategoriaArticuloRoute: BlogCategoriaArticuloRoute,
+  CatalogoCategoriaProductoRoute: CatalogoCategoriaProductoRoute,
+  BlogCategoriaIndexRoute: BlogCategoriaIndexRoute,
   CatalogoCategoriaIndexRoute: CatalogoCategoriaIndexRoute,
 }
 export const routeTree = rootRouteImport
